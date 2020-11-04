@@ -5,7 +5,7 @@
     "url": "https://github.com/KalleDK/hive-webexteams",
     "license": "MIT",
     "description": "Manage rooms in Webex Teams",
-    "dataTypeList": ["thehive:case"],
+    "dataTypeList": ["thehive:case", "thehive:case_task", "thehive:case_artifact", "thehive:case_task_log"],
     "command": "webexteams/webexteams.py",
     "baseConfig": "WebexTeams",
     "configurationItems": [
