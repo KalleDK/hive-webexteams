@@ -22,3 +22,8 @@ clean-test: ## remove test and coverage artifacts
 
 test: ## run tests quickly with the default Python
 	pytest
+
+dist: clean ## builds source and wheel package
+	python setup.py sdist
+	python setup.py bdist_wheel
+	ls -l dist
