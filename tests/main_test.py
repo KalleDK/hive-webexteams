@@ -1,13 +1,12 @@
 import unittest
-import json
-import webexteams.__main__
-from webexteams.main import main
+import webexcortex.__main__
+from webexcortex.main import main
 from unittest.mock import MagicMock, patch, call, seal, PropertyMock
 
 
 class TestMain(unittest.TestCase):
-    @patch('webexteams.client.MembershipsAPI', autospec=True, spec_set=True)
-    @patch("webexteams.client.RoomsAPI", autospec=True, spec_set=True)
+    @patch('webexcortex.client.MembershipsAPI', autospec=True, spec_set=True)
+    @patch("webexcortex.client.RoomsAPI", autospec=True, spec_set=True)
     @patch('webexteamssdk.WebexTeamsAPI')
     @patch('cortexutils.worker.Worker', autospec=True, spec_set=True)
     def test_main(self, worker_cls, api_cls, room_cls, member_cls):
@@ -64,8 +63,8 @@ class TestMain(unittest.TestCase):
         ])
 
 
-    @patch('webexteams.client.MembershipsAPI', autospec=True, spec_set=True)
-    @patch("webexteams.client.RoomsAPI", autospec=True, spec_set=True)
+    @patch('webexcortex.client.MembershipsAPI', autospec=True, spec_set=True)
+    @patch("webexcortex.client.RoomsAPI", autospec=True, spec_set=True)
     @patch('webexteamssdk.WebexTeamsAPI')
     @patch('cortexutils.worker.Worker', autospec=True, spec_set=True)
     def test_main_exception(self, worker_cls, api_cls, room_cls, member_cls):
@@ -98,11 +97,11 @@ class TestMain(unittest.TestCase):
            call().error(message='Missing parameter: "config.webex_bot_token"', ensure_ascii=False)
         ])
 
-    @patch.object(webexteams.__main__.sys,'exit')
-    @patch.object(webexteams.__main__, "__name__", "__main__")
-    @patch.object(webexteams.__main__, 'main', return_value=42)
+    @patch.object(webexcortex.__main__.sys,'exit')
+    @patch.object(webexcortex.__main__, "__name__", "__main__")
+    @patch.object(webexcortex.__main__, 'main', return_value=42)
     def test_init(self, main_mock, sys_mock):
-        webexteams.__main__.init()
+        webexcortex.__main__.init()
         assert sys_mock.call_args[0][0] == 42
 
 if __name__ == '__main__':

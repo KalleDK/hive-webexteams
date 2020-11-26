@@ -1,10 +1,10 @@
 {
     "python.testing.pytestArgs": [
-        "webexteams/webexteams_tests",
+        "tests",
         "--cov-report",
         "xml:cov.xml",
         "--cov",
-        "webexteams/webexteams"
+        "webexcortex"
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.nosetestsEnabled": false,

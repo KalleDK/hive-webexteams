@@ -1,7 +1,7 @@
 import unittest
 import json
-from webexteams.datatypes import Fields, Member, MemberID, RoomAction, RoomID, Room
-from webexteams.handler import FullReport, Handler
+from webexcortex.datatypes import Fields, Member, MemberID, RoomAction, RoomID, Room
+from webexcortex.handler import FullReport, Handler
 from unittest.mock import MagicMock, patch, call
 
 InvalidRoomID = RoomID("")
@@ -51,7 +51,7 @@ ExtraMember = Member(
 )
 
 class TestHandler(unittest.TestCase):
-    @patch('webexteams.client.Client', autospec=True, spec_set=True)
+    @patch('webexcortex.client.Client', autospec=True, spec_set=True)
     def test_delete_room(self, client_cls):
         req = MagicMock(
             action=RoomAction.DELETE,
@@ -79,7 +79,7 @@ class TestHandler(unittest.TestCase):
 
         self.assertEqual(report, want)
 
-    @patch('webexteams.client.Client', autospec=True, spec_set=True)
+    @patch('webexcortex.client.Client', autospec=True, spec_set=True)
     def test_add_guests(self, client_cls):
         req = MagicMock(
             action=RoomAction.ADD_GUESTS,
@@ -116,7 +116,7 @@ class TestHandler(unittest.TestCase):
 
         self.assertEqual(report, want, msg=report.to_dict())
 
-    @patch('webexteams.client.Client', autospec=True, spec_set=True)
+    @patch('webexcortex.client.Client', autospec=True, spec_set=True)
     def test_remove_guests(self, client_cls):
         req = MagicMock(
             action=RoomAction.REMOVE_GUESTS,
@@ -155,7 +155,7 @@ class TestHandler(unittest.TestCase):
 
         self.assertEqual(report, want, msg=json.dumps(report.to_dict(), indent=2))
 
-    @patch('webexteams.client.Client', autospec=True, spec_set=True)
+    @patch('webexcortex.client.Client', autospec=True, spec_set=True)
     def test_create_room(self, client_cls):
         req = MagicMock(
             action=RoomAction.CREATE,
@@ -195,7 +195,7 @@ class TestHandler(unittest.TestCase):
 
         self.assertEqual(report, want, msg=repr(report))
 
-    @patch('webexteams.client.Client', autospec=True, spec_set=True)
+    @patch('webexcortex.client.Client', autospec=True, spec_set=True)
     def test_create_room_exception(self, client_cls):
         req = MagicMock(
             action=RoomAction.CREATE,
@@ -214,7 +214,7 @@ class TestHandler(unittest.TestCase):
         with self.assertRaises(Exception):
             uut.handle(req)
 
-    @patch('webexteams.client.Client', autospec=True, spec_set=True)
+    @patch('webexcortex.client.Client', autospec=True, spec_set=True)
     def test_handle_exception(self, client_cls):
         req = MagicMock(
             action="fa"

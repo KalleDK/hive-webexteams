@@ -1,13 +1,11 @@
 import unittest
 
-from webexteamssdk.api import organizations
-
-from webexteams.datatypes import Member, MemberID, RoomAction, RoomID, Room
-from webexteams.responder import Config, Request
+from webexcortex.datatypes import Member, MemberID, RoomAction, RoomID, Room
+from webexcortex.responder import Config, Request
 from unittest.mock import MagicMock, patch, call
 
 class TestConfig(unittest.TestCase):
-    @patch('webexteams.responder.IParams', autospec=True, spec_set=True)
+    @patch('webexcortex.responder.IParams', autospec=True, spec_set=True)
     def test_get_members(self, params_cls):
         
         params_mock = params_cls()
@@ -18,7 +16,7 @@ class TestConfig(unittest.TestCase):
         uut = Config(params_mock)
         self.assertEqual(uut.webex_bot_token, "token")
 
-    @patch('webexteams.responder.IParams', autospec=True, spec_set=True)
+    @patch('webexcortex.responder.IParams', autospec=True, spec_set=True)
     def test_get_members(self, params_cls):
         
         values = {
@@ -46,7 +44,7 @@ class TestConfig(unittest.TestCase):
         self.assertListEqual(uut.guests, ["user@com.org"])
         self.assertListEqual(uut.owners, ["me@org.com"])
 
-    @patch('webexteams.responder.IParams', autospec=True, spec_set=True)
+    @patch('webexcortex.responder.IParams', autospec=True, spec_set=True)
     def test_get_members_exception(self, params_cls):
         
         values = {

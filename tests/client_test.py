@@ -1,7 +1,7 @@
 import unittest
 
-from webexteams.datatypes import Member, MemberID, RoomID, Room
-from webexteams.client import Client
+from webexcortex.datatypes import Member, MemberID, RoomID, Room
+from webexcortex.client import Client
 from unittest.mock import MagicMock, patch, call
 
 InvalidRoomID = RoomID("")
@@ -51,8 +51,8 @@ ExtraMember = Member(
 )
 
 class TestClientRoom(unittest.TestCase):
-    @patch('webexteams.client.MembershipsAPI', autospec=True, spec_set=True)
-    @patch("webexteams.client.RoomsAPI", autospec=True, spec_set=True)
+    @patch('webexcortex.client.MembershipsAPI', autospec=True, spec_set=True)
+    @patch("webexcortex.client.RoomsAPI", autospec=True, spec_set=True)
     def test_delete_room(self, room_cls, membership_cls):
         
         room_mock = room_cls()
@@ -66,8 +66,8 @@ class TestClientRoom(unittest.TestCase):
             call.delete(str(ValidRoomID))
         ]
 
-    @patch('webexteams.client.MembershipsAPI', autospec=True, spec_set=True)
-    @patch("webexteams.client.RoomsAPI", autospec=True, spec_set=True)
+    @patch('webexcortex.client.MembershipsAPI', autospec=True, spec_set=True)
+    @patch("webexcortex.client.RoomsAPI", autospec=True, spec_set=True)
     def test_delete_room_invalidid(self, room_cls, membership_cls):
         
         room_mock = room_cls()
@@ -80,8 +80,8 @@ class TestClientRoom(unittest.TestCase):
         assert membership_mock.mock_calls == []
         assert room_mock.method_calls == []
 
-    @patch('webexteams.client.MembershipsAPI', autospec=True, spec_set=True)
-    @patch("webexteams.client.RoomsAPI", autospec=True, spec_set=True)
+    @patch('webexcortex.client.MembershipsAPI', autospec=True, spec_set=True)
+    @patch("webexcortex.client.RoomsAPI", autospec=True, spec_set=True)
     def test_create_room(self, room_cls, membership_cls):
         
         room_mock = room_cls()
@@ -95,8 +95,8 @@ class TestClientRoom(unittest.TestCase):
         self.assertListEqual(room_mock.method_calls, [call.create(title=ValidRoomTitle)], "only a single call to create")
         self.assertEqual(room, ValidRoom, "invalid room returned")
 
-    @patch('webexteams.client.MembershipsAPI', autospec=True, spec_set=True)
-    @patch("webexteams.client.RoomsAPI", autospec=True, spec_set=True)
+    @patch('webexcortex.client.MembershipsAPI', autospec=True, spec_set=True)
+    @patch("webexcortex.client.RoomsAPI", autospec=True, spec_set=True)
     def test_get_room(self, room_cls, membership_cls):
         
         room_mock = room_cls()
@@ -110,8 +110,8 @@ class TestClientRoom(unittest.TestCase):
         self.assertListEqual(room_mock.method_calls, [call.get(roomId=str(ValidRoomID))], "only a single call to get")
         self.assertEqual(room, ValidRoom, "invalid room returned")
 
-    @patch('webexteams.client.MembershipsAPI', autospec=True, spec_set=True)
-    @patch("webexteams.client.RoomsAPI", autospec=True, spec_set=True)
+    @patch('webexcortex.client.MembershipsAPI', autospec=True, spec_set=True)
+    @patch("webexcortex.client.RoomsAPI", autospec=True, spec_set=True)
     def test_get_room_exception(self, room_cls, membership_cls):
         
         room_mock = room_cls()
@@ -126,8 +126,8 @@ class TestClientRoom(unittest.TestCase):
         assert membership_mock.mock_calls == []
         assert room_mock.method_calls == []
 
-    @patch('webexteams.client.MembershipsAPI', autospec=True, spec_set=True)
-    @patch("webexteams.client.RoomsAPI", autospec=True, spec_set=True)
+    @patch('webexcortex.client.MembershipsAPI', autospec=True, spec_set=True)
+    @patch("webexcortex.client.RoomsAPI", autospec=True, spec_set=True)
     def test_get_rooms(self, room_cls, membership_cls):
         
         room_mock = room_cls()
@@ -146,8 +146,8 @@ class TestClientRoom(unittest.TestCase):
 
 
 class TestClientMemberships(unittest.TestCase):
-    @patch('webexteams.client.MembershipsAPI', autospec=True, spec_set=True)
-    @patch("webexteams.client.RoomsAPI", autospec=True, spec_set=True)
+    @patch('webexcortex.client.MembershipsAPI', autospec=True, spec_set=True)
+    @patch("webexcortex.client.RoomsAPI", autospec=True, spec_set=True)
     def test_get_members(self, room_cls, membership_cls):
         
         room_mock = room_cls()
@@ -181,8 +181,8 @@ class TestClientMemberships(unittest.TestCase):
         self.assertListEqual(room_mock.method_calls, [], "rooms should not be touched")
         self.assertListEqual(members, [ValidMember, ExtraMember, ModMember], "invalid members returned")
 
-    @patch('webexteams.client.MembershipsAPI', autospec=True, spec_set=True)
-    @patch("webexteams.client.RoomsAPI", autospec=True, spec_set=True)
+    @patch('webexcortex.client.MembershipsAPI', autospec=True, spec_set=True)
+    @patch("webexcortex.client.RoomsAPI", autospec=True, spec_set=True)
     def test_add_members(self, room_cls, membership_cls):
         
         room_mock = room_cls()
@@ -208,8 +208,8 @@ class TestClientMemberships(unittest.TestCase):
         self.assertListEqual(room_mock.method_calls, [], "rooms should not be touched")
         self.assertListEqual(members, [ExtraMember], "invalid members returned")
 
-    @patch('webexteams.client.MembershipsAPI', autospec=True, spec_set=True)
-    @patch("webexteams.client.RoomsAPI", autospec=True, spec_set=True)
+    @patch('webexcortex.client.MembershipsAPI', autospec=True, spec_set=True)
+    @patch("webexcortex.client.RoomsAPI", autospec=True, spec_set=True)
     def test_add_members_mods(self, room_cls, membership_cls):
         
         room_mock = room_cls()
@@ -243,8 +243,8 @@ class TestClientMemberships(unittest.TestCase):
         self.assertListEqual(room_mock.method_calls, [], "rooms should not be touched")
         self.assertListEqual(members, [ValidMember, ModMember], "invalid members returned")
 
-    @patch('webexteams.client.MembershipsAPI', autospec=True, spec_set=True)
-    @patch("webexteams.client.RoomsAPI", autospec=True, spec_set=True)
+    @patch('webexcortex.client.MembershipsAPI', autospec=True, spec_set=True)
+    @patch("webexcortex.client.RoomsAPI", autospec=True, spec_set=True)
     def test_remove_members(self, room_cls, membership_cls):
         
         room_mock = room_cls()
