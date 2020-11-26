@@ -1,0 +1,5 @@
+cortexutils
+webexteamssdk
+
+pytest
+pytest-cov

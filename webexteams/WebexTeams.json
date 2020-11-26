@@ -5,17 +5,25 @@
     "url": "https://github.com/KalleDK/hive-webexteams",
     "license": "MIT",
     "description": "Manage rooms in Webex Teams",
-    "dataTypeList": ["thehive:case", "thehive:case_task", "thehive:case_artifact", "thehive:case_task_log"],
-    "command": "webexteams/webexteams.py",
+    "dataTypeList": ["thehive:case"],
+    "command": "WebexTeams/webexteams.py",
     "baseConfig": "WebexTeams",
     "configurationItems": [
       {
-        "name": "webexteams_data",
-        "description": "Save directory",
+        "name": "organization",
+        "description": "Short name for organization, to be used in WebEx room title.",
         "type": "string",
         "multi": false,
         "required": true,
-        "default": "/path/to/dir"
+        "default": "ORG"
+      },
+      {
+        "name": "webex_bot_token",
+        "description": "Token for the webex bot",
+        "type": "string",
+        "multi": false,
+        "required": true,
+        "default": "XXXXXXX"
       }
     ]
 }
