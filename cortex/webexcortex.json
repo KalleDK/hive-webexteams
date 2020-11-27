@@ -2,7 +2,7 @@
     "name": "Webex-Cortex",
     "version": "0.1",
     "author": "Kalle M. Aagaard",
-    "url": "https://github.com/KalleDK/hive-webexteams",
+    "url": "https://github.com/KalleDK/webex-cortex",
     "license": "MIT",
     "description": "Manage rooms in Webex Teams",
     "dataTypeList": ["thehive:case"],
