@@ -1,12 +1,12 @@
 {
-    "name": "WebexTeams",
+    "name": "Webex-Cortex",
     "version": "0.1",
     "author": "Kalle M. Aagaard",
     "url": "https://github.com/KalleDK/hive-webexteams",
     "license": "MIT",
     "description": "Manage rooms in Webex Teams",
     "dataTypeList": ["thehive:case"],
-    "command": "WebexTeams/webexteams.py",
+    "command": "webexcortex",
     "baseConfig": "WebexTeams",
     "configurationItems": [
       {
