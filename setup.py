@@ -12,7 +12,7 @@ with io.open(os.path.join(current, 'README.md'), encoding="utf-8") as f:
 with open(os.path.join(current, 'requirements.txt')) as f:
     requires = f.read().splitlines()
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 setup(
     name='webex-cortex',
@@ -37,5 +37,5 @@ setup(
     ],
     install_requires=requires,
     entry_points={'console_scripts': [
-        'webexcortex = webexcortex.__main__:init']},
+        'webexcortex = webexcortex.main:main']},
 )
